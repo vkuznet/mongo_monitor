@@ -1,0 +1,23 @@
+This is very simple tool with aim to help developers/admins to monitor MongoDB activity
+via web interface. Insipred by awstat, mongostat, protovis tools. It is written in
+Python and depends on python, pymongo driver, CherryPy (python web framework) and
+protovis (http://vis.stanford.edu/protovis/) JS graphics library.
+
+INSTALLATION:
+------------
+
+Download mongo_monitor.py python script, make it executable, e.g. chmod +x mongo_monitor.py
+Download protovis library and place it into the same directory as mongo_monitor.py
+Install CherryPy on your system.
+
+USAGE:
+-----
+very simple, just run ./mongo_monitor.py
+You can provide optional --uri parameter to specify the location of your MongoDB. For
+more options see ./mongo_monitor.py --help
+
+Please note, the tool will create mongodb.stats collection in your MongoDB and
+will store periodically the stat info over there. This info is generated via
+db.command( { "serverStatus" : 1 } ) with given interval. Finally, once enough statistics
+will be accumulated, you'll be able to see nice plots done by protovis library.
+
