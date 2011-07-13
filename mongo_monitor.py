@@ -52,13 +52,13 @@ def template_top(title="Test", dburi=None):
     page += """<script type="text/javascript" src="/js/protovis-r3.2.js"></script>
 <style type="text/css" media="screen">
 body {
-    font-size: 12px;font-family: Verdana, Arial, sans-serif;
-    padding: 10px;background-color: #DBDBDB;margin-top:-10px;
+    font-size:12px;font-family:Verdana,Arial,sans-serif;height:100%;
+    padding:10px;background-color:#DBDBDB;margin-top:-10px;
 } 
 .big {font-size: 36px;font-weight:bold;}
 .centerBox {
-    position:absolute;left:50%;width:900px;margin-left:-450px;
-    vertical-align:top;padding:10px;background-color:#fff;
+    position:absolute;left:50%;width:900px;margin-left:-450px;min-height:100%;
+    vertical-align:top;background-color:#fff;padding-left:10px;padding-right:10px
 }
 .shadow {
     -webkit-box-shadow: 0px 0px 5px 5px #666666;
@@ -66,10 +66,11 @@ body {
     -o-box-shadow: 0px 0px 5px 5px #666666;
     box-shadow: 0px 0px 5px 5px #666666;
 }
-.bottom {font-size: 10px; color: #888888;}
+.bottom {font-size:10px;color:#888888;margin-left:150px;}
 .hide {display: none;}
 .show {display: block;margin-top:6px;border-top-width:1px; }
 h3 {color: #4D5B99;border-bottom: 1px dotted #555;}
+hr.line {width: 100%;border: none;border-top: 1px dotted #CCCCCC;}
 a:link {font-family: Verdana, Arial, sans-serif;
         color: #4D5B99;text-decoration: none;border-bottom: 1px dotted #555;}
 a:visited {font-family: Verdana, Arial, sans-serif;
@@ -84,13 +85,13 @@ a[name] {color: inherit;text-decoration: inherit;}
 
 def template_bottom():
     """Return bottom html template"""
-    license = '<a href="http://www.gnu.org/licenses/gpl.html">GNU</a>'
+    license = '<a href="http://www.gnu.org/licenses/gpl.html">GPL</a>'
     author  = '<a href="http://www.linkedin.com/pub/valentin-kuznetsov/15/167/ab6">V.Kuznetsov</a>'
     pkgs    = '<a href="http://www.python.org/">Python</a>, '
     pkgs   += '<a href="http://www.cherrypy.org/">CherryPy</a>, '
     pkgs   += '<a href="http://vis.stanford.edu/protovis/">Protovis</a>'
-    page    = '<br/><br/><br/>'
-    page   += '<div align="center" class="bottom">Author: %s, License: %s, Tools: %s</div>' \
+    page    = '<br/><br/><br/><hr class="line"/>'
+    page   += '<div class="bottom">Author: %s, License: %s, build with: %s</div>' \
                 % (author, license, pkgs)
     page   += '</div></body></html>'
     return page
